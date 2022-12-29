@@ -6,5 +6,5 @@ class ApiEndPoints {
 class _AuthEndPoints {
   final String registerEmail = 'auth/register/';
   final String loginEmail = 'auth/login/';
-  final String googleLogin = 'google/login/';
+  final String googleConnect = 'auth/google/connect/';
 }

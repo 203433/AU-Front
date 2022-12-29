@@ -3,14 +3,55 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../utils/api_endpoints.dart';
 
 class GoogleController{
-  static final _googleSignIn = GoogleSignIn(
-    clientId: "821839836006-d6cbjccujdmc366rcqot5c39esdom3uu.apps.googleusercontent.com"
-  );
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  static Future<GoogleSignInAccount?> login() => _googleSignIn.signIn();
+  Future<void> login(String? accessToken) async {
+    var headers = {'Content-Type': 'application/json'};
+    try {
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.googleConnect);
+      Map body = {
+        'access_token': accessToken,
+      };
+
+      http.Response response =
+      await http.post(url, body: jsonEncode(body), headers: headers);
+
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        final auxUser = json["user"];
+        final user = jsonEncode(auxUser);
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return SimpleDialog(
+                title: const Text('User Info'),
+                contentPadding: const EdgeInsets.all(20),
+                children: [Text(response.body)],
+              );
+            });
+
+      } else {
+        print(response.body);
+        throw jsonDecode(response.body);
+      }
+    } catch (error) {
+      Get.back();
+      showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return SimpleDialog(
+              title: const Text('Error'),
+              contentPadding: const EdgeInsets.all(20),
+              children: [Text(error.toString())],
+            );
+          });
+    }
+  }
 }

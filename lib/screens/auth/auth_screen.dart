@@ -5,9 +5,12 @@ import 'package:frontend/controllers/register_controller.dart';
 import 'package:frontend/controllers/google_controller.dart';
 import 'package:frontend/screens/auth/widgets/input_fields.dart';
 import 'package:frontend/screens/auth/widgets/submit_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -148,13 +151,33 @@ class _AuthScreenState extends State<AuthScreen> {
             color: Colors.red,
           ),
           label: Text('Sign Up with Google'),
-          onPressed: () => signIn(),
+          onPressed: () => signInGoogle(),
+        ),
+        ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            onPrimary: Colors.black,
+            minimumSize: Size(double.infinity, 50),
+          ),
+          icon: FaIcon(
+            FontAwesomeIcons.facebook,
+            color: Colors.blue,
+          ),
+          label: Text('Sign Up with Facebook'),
+          onPressed: () => signInFacebook(),
         ),
       ],
     );
   }
 
-  Future signIn() async{
-    await GoogleController.login();
+  Future signInGoogle() async{
+    final googleSignIn = GoogleSignIn();
+    final result = await googleSignIn.signIn();
+    final ggAuth = await result?.authentication;
+    await googleController.login(ggAuth?.accessToken);
+  }
+
+  Future signInFacebook() async{
+    //await GoogleController.login();
   }
 }
