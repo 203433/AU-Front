@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   provider: ^6.0.5
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,12 @@ flutter:
        - assets/a3.png
        - assets/a1.png
        - assets/a4.png
+       - assets/destination.svg
+       - assets/winners.svg
+       - assets/icons/home-outlined.svg
+       - assets/icons/vector-polyline-edit.svg
+       - assets/icons/content-save-outline.svg
+       - assets/icons/account-outline.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
