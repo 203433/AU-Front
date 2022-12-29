@@ -1,15 +1,11 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../utils/api_endpoints.dart';
 
 class GoogleController{
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> login(String? accessToken) async {
     var headers = {'Content-Type': 'application/json'};
@@ -33,7 +29,7 @@ class GoogleController{
               return SimpleDialog(
                 title: const Text('User Info'),
                 contentPadding: const EdgeInsets.all(20),
-                children: [Text(response.body)],
+                children: [Text(user)],
               );
             });
 

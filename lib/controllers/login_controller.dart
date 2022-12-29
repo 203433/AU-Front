@@ -33,7 +33,7 @@ class LoginController extends GetxController {
               return SimpleDialog(
                 title: const Text('User Info'),
                 contentPadding: const EdgeInsets.all(20),
-                children: [Text(response.body)],
+                children: [Text(user)],
               );
             });
 
