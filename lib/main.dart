@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/profile.dart';
+import 'package:frontend/pages/top.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Material App',
         theme: ThemeData(fontFamily: "asap"),
-        home: Profile()
+        home: Top(),
     );
   }
 }
