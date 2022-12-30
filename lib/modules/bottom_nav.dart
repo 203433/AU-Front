@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frontend/screens/pagina_usar.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
-
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
 
-int _selectedIndex = 2;
+int _selectedIndex = 3;
 
 class _BottomNavState extends State<BottomNav> {
   @override
@@ -64,13 +64,28 @@ class _BottomNavState extends State<BottomNav> {
       showSelectedLabels: false,
       showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,
-      onTap: _onItemTapped,
+      onTap: (index) => _onItemTapped(context as BuildContext, index),
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(BuildContext context, int index) {
     setState(() {
       _selectedIndex = index;
+      if (index == 0) {
+        _paginaUsar(context);
+      } else if (index == 1) {
+        _paginaUsar(context);
+      } else if (index == 2) {
+        _paginaUsar(context);
+      } else if (index == 3) {
+        _paginaUsar(context);
+      }
     });
+  }
+
+  void _paginaUsar(BuildContext context) {
+    Navigator.of(context).pushNamed("/",
+        arguments: PaginaUsarArguments(selectedIndex: _selectedIndex));
+    print(_selectedIndex);
   }
 }

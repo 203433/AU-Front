@@ -31,7 +31,6 @@ class PaginaInicio extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: const BottomNav(),
       ),
     );
   }
