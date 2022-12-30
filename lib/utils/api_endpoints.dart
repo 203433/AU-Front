@@ -7,4 +7,5 @@ class _AuthEndPoints {
   final String registerEmail = 'auth/register/';
   final String loginEmail = 'auth/login/';
   final String googleConnect = 'auth/google/connect/';
+  final String facebookConnect = 'auth/facebook/connect/';
 }

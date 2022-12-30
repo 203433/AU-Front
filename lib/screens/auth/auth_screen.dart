@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
 
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:frontend/controllers/facebook_controller.dart';
 import 'package:frontend/controllers/login_controller.dart';
 import 'package:frontend/controllers/register_controller.dart';
 import 'package:frontend/controllers/google_controller.dart';
@@ -8,6 +10,7 @@ import 'package:frontend/screens/auth/widgets/submit_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
@@ -24,6 +27,8 @@ class _AuthScreenState extends State<AuthScreen> {
   LoginController loginController = Get.put(LoginController());
 
   GoogleController googleController = Get.put(GoogleController());
+
+  FacebookController facebookController = Get.put(FacebookController());
 
   var isLogin = false.obs;
   @override
@@ -171,13 +176,24 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future signInGoogle() async{
-    final googleSignIn = GoogleSignIn();
-    final result = await googleSignIn.signIn();
-    final ggAuth = await result?.authentication;
-    await googleController.login(ggAuth?.accessToken);
+    try {
+      final googleSignIn = GoogleSignIn();
+      final result = await googleSignIn.signIn();
+      final ggAuth = await result?.authentication;
+      await googleController.login(ggAuth?.accessToken);
+    } catch (error) {
+      print(error);
+    }
   }
 
   Future signInFacebook() async{
-    //await GoogleController.login();
+    final LoginResult result = await FacebookAuth.instance.login();
+    if (result.status == LoginStatus.success) {
+      final AccessToken accessToken = result.accessToken!;
+      await facebookController.login(accessToken.toJson()["token"]);
+    } else {
+      print(result.status);
+      print(result.message);
+    }
   }
 }
