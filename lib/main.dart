@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< Updated upstream
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -110,6 +111,20 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+=======
+      title: 'Material App',
+      theme: ThemeData(fontFamily: "asap"),
+      //home: Top(),
+      initialRoute: "/",
+      routes: {
+        "/": (BuildContext context) => Top(),
+        "/TopUser": (BuildContext context) => TableUser(),
+        "/Badges": (BuildContext context) => tableBadges(),
+        "/Navigator": (BuildContext context) => Navigation(
+              index: '0',
+            ),
+      },
+>>>>>>> Stashed changes
     );
   }
 }
