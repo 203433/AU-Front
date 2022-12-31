@@ -23,9 +23,9 @@ class RegisterController extends GetxController{
         ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.registerEmail);
       Map body = {
         'username' : usernameController.text,
+        'email' : emailController.text.trim(),
         'first_name' : nameController.text,
         'last_name' : lastNameController.text,
-        'email' : emailController.text.trim(),
         'password1' : passwordController.text,
         'password2' : passwordConfirmController.text
       };
@@ -33,9 +33,18 @@ class RegisterController extends GetxController{
       http.Response response =
           await http.post(url, body : jsonEncode(body), headers: headers);
 
-      if (response.statusCode == 200){
+      if (response.statusCode == 201){
         final json = jsonDecode(response.body);
-        print(json);
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return SimpleDialog(
+                title: const Text('User Info'),
+                contentPadding: const EdgeInsets.all(20),
+                children: [Text(response.body)],
+              );
+            });
+
       } else{
         throw jsonDecode(response.body)["Message"] ?? "Unknown Error Occurred";
       }

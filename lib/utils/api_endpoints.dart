@@ -8,4 +8,7 @@ class _AuthEndPoints {
   final String loginEmail = 'auth/login/';
   final String googleConnect = 'auth/google/connect/';
   final String facebookConnect = 'auth/facebook/connect/';
+  final String user = 'auth/user/';
 }
+
+// 413 LOS PIBES
