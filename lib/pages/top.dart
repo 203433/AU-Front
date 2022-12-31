@@ -3,7 +3,6 @@ import 'package:frontend/pages/widgetsProfile.dart';
 
 class Top extends StatelessWidget {
   const Top({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,27 +12,27 @@ class Top extends StatelessWidget {
         elevation: 0,
       ),
       body:SizedBox(
-        width: double.infinity,
-        child: ListView(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 30,
-                  alignment: Alignment.topRight,
-                  child:Icon(Icons.settings_outlined),
-                ),
-                profilePhoto(name: "MilleniumDay",),
-                SizedBox( height: 20,),
-                navBarProfile(),
-                SizedBox( height: 40,),
-                tableBadges(),
-              ],
-            ),
-          ],
-        )
+          width: double.infinity,
+          child: ListView(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    height: 30,
+                    alignment: Alignment.topRight,
+                    child:Icon(Icons.settings_outlined),
+                  ),
+                  profilePhoto(name: "MilleniumDay",),
+                  SizedBox( height: 20,),
+                  navBarProfile(),
+                  SizedBox( height: 40,),
+                  tableBadges(),
+                ],
+              ),
+            ],
+          )
       ),
 
       bottomNavigationBar: navigationExample(),
@@ -95,11 +94,11 @@ class TopUser extends StatelessWidget {
     return Row(
       children: [
         Container(width: 120,height: 65,
-        child: CircleAvatar(
-          radius: 50,
-          backgroundImage: NetworkImage(
-              image),
-        ),),
+          child: CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(
+                image),
+          ),),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

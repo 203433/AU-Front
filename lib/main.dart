@@ -12,9 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Material App',
-        theme: ThemeData(fontFamily: "asap"),
-        home: Top(),
+      title: 'Material App',
+      theme: ThemeData(fontFamily: "asap"),
+      initialRoute: "/",
+      routes: {
+        "/": (BuildContext context) => Profile(),
+        "/top": (BuildContext context) => Top(),
+      },
     );
   }
 }

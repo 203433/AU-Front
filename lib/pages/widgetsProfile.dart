@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 
-class profilePhoto extends StatelessWidget{
+
+class profilePhoto extends StatelessWidget {
   const profilePhoto({Key? key, required this.name}) : super(key: key);
   final String name;
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        CircleAvatar(
+        const CircleAvatar(
           radius: 50,
           backgroundImage: NetworkImage(
               'https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2021/06/vander-films-apvb8kmih5w-unsplash-scaled.jpeg?fit=1200%2C900&quality=60&strip=all&ssl=1%27%27'),
         ),
-        Text(name, style: TextStyle(fontSize: 26),),
-        Text("1,300 XP", style: TextStyle(fontSize: 20, color: Colors.grey[500]!)),
+        Text(
+          name,
+          style: TextStyle(fontSize: 26),
+        ),
+        Text("1,300 XP",
+            style: TextStyle(fontSize: 20, color: Colors.grey[500]!)),
       ],
     );
   }
 }
 
-class navBarProfile extends StatelessWidget{
+
+class navBarProfile extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
-    return  Container(
+  Widget build(BuildContext context) {
+    return Container(
       width: 365,
       height: 30,
       decoration: BoxDecoration(
@@ -35,19 +41,39 @@ class navBarProfile extends StatelessWidget{
         boxShadow: [
           BoxShadow(
             color: Colors.grey[800]!.withOpacity(0.29),
-            offset: const Offset(-2,3),
+            offset: const Offset(-2, 3),
             blurRadius: 10,
           ),
         ],
       ),
-      child:Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          navBarItem(name: "Insignias" , color: Colors.black.withOpacity(0.3),),
-          navBarItem(name: "Top tuxmapers" , color: Colors.black.withOpacity(0.3),),
-          Expanded(child: Container(
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed("/");
+            },
+            child: navBarItem(
+              name: "Insignias",
+              color: Colors.black.withOpacity(0.3),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed("/top");
+            },
+            child: navBarItem(
+              name: "Top tuxmapers",
+              color: Colors.black.withOpacity(0.3),
+            ),
+          ),
+          Container(
               height: 30,
-              child: Center(child: Text("Estadistica", style: TextStyle(color: Colors.black.withOpacity(0.3) ),))),),
+              child: Center(
+                  child: Text(
+                "Estadistica",
+                style: TextStyle(color: Colors.black.withOpacity(0.3)),
+              ))),
         ],
       ),
     );
@@ -55,14 +81,15 @@ class navBarProfile extends StatelessWidget{
 }
 
 class navBarItem extends StatelessWidget {
-  const navBarItem({Key? key, required this.name,required this.color}) : super(key: key);
+  const navBarItem({Key? key, required this.name, required this.color})
+      : super(key: key);
   final String name;
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: Container(
+    return Container(
         height: 30,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           border: Border(
             right: BorderSide(
               color: Colors.grey,
@@ -70,7 +97,11 @@ class navBarItem extends StatelessWidget {
             ),
           ),
         ),
-        child: Center(child: Text(name, style: TextStyle(color: color),))),);
+        child: Center(
+            child: Text(
+          name,
+          style: TextStyle(color: color),
+        )));
   }
 }
 

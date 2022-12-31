@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body:SizedBox(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,12 +20,18 @@ class Profile extends StatelessWidget {
               width: double.infinity,
               height: 30,
               alignment: Alignment.topRight,
-              child:Icon(Icons.settings_outlined),
+              child: Icon(Icons.settings_outlined),
             ),
-            profilePhoto(name: "MilleniumDay",),
-            SizedBox( height: 20,),
+            profilePhoto(
+              name: "MilleniumDay",
+            ),
+            SizedBox(
+              height: 20,
+            ),
             navBarProfile(),
-            SizedBox( height: 40,),
+            SizedBox(
+              height: 40,
+            ),
             tableBadges(),
           ],
         ),
@@ -35,9 +41,9 @@ class Profile extends StatelessWidget {
   }
 }
 
-class tableBadges extends StatelessWidget{
+class tableBadges extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       width: 365,
       height: 300,
@@ -51,21 +57,37 @@ class tableBadges extends StatelessWidget{
         boxShadow: [
           BoxShadow(
             color: Colors.grey[800]!.withOpacity(0.29),
-            offset: const Offset(-2,3),
+            offset: const Offset(-2, 3),
             blurRadius: 10,
           ),
         ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          badges(image:"images/Supremo.png" , name:"Supremo" , info:"Mas de 50 rutas subidas" ,),
+        children: const <Widget>[
+          badges(
+            image: "images/Supremo.png",
+            name: "Supremo",
+            info: "Mas de 50 rutas subidas",
+          ),
           Divider(),
-          badges(image:"images/Master.png" , name:"Master" , info:"Mas de 50 correciones en rutas" ,),
+          badges(
+            image: "images/Master.png",
+            name: "Master",
+            info: "Mas de 50 correciones en rutas",
+          ),
           Divider(),
-          badges(image:"images/Leyenda.png" , name:"Leyenda" , info:"20 rutas agregadas" ,),
+          badges(
+            image: "images/Leyenda.png",
+            name: "Leyenda",
+            info: "20 rutas agregadas",
+          ),
           Divider(),
-          badges(image:"images/Platino.png" , name:"Platino" , info:"5 rutas autorizadas" ,),
+          badges(
+            image: "images/Platino.png",
+            name: "Platino",
+            info: "5 rutas autorizadas",
+          ),
         ],
       ),
     );
@@ -73,7 +95,9 @@ class tableBadges extends StatelessWidget{
 }
 
 class badges extends StatelessWidget {
-  const badges({Key? key, required this.image, required this.name, required this.info}) : super(key: key);
+  const badges(
+      {Key? key, required this.image, required this.name, required this.info})
+      : super(key: key);
   final String image;
   final String name;
   final String info;
@@ -81,13 +105,26 @@ class badges extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(width: 120,height: 60, child: Image.asset(image,scale: 5,),),
+        Container(
+          width: 120,
+          height: 60,
+          child: Image.asset(
+            image,
+            scale: 5,
+          ),
+        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(name, style: TextStyle(color: Colors.black),),
-            Text(info, style: TextStyle(color: Colors.black.withOpacity(0.3) ),),
+            Text(
+              name,
+              style: TextStyle(color: Colors.black),
+            ),
+            Text(
+              info,
+              style: TextStyle(color: Colors.black.withOpacity(0.3)),
+            ),
           ],
         )
       ],
