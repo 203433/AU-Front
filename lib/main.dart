@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: "Asap"),
       initialRoute: "/",
       routes: {
-        "/": (context) => const PaginaUsar(),
+        "/": (context) => const EditorRutas(),
       },
     );
   }

@@ -74,6 +74,11 @@ flutter:
        - assets/icons/vector-polyline-edit.svg
        - assets/icons/content-save-outline.svg
        - assets/icons/account-outline.svg
+       - assets/icons/wheelchair-accessibility.svg
+       - assets/icons/wifi-outlined.svg
+       - assets/icons/car-seat-cooler.svg
+       - assets/icons/music-note-outline.svg
+       - assets/icons/credit-card-outline.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
