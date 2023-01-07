@@ -12,10 +12,31 @@ class MyHttpOverrides extends HttpOverrides{
   }
 }
 
-main() async {
+void main() async {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(GetMaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: AuthScreen(),
-  ));
+  runApp(const MyApp());
 }
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Material App',
+      theme: ThemeData(fontFamily: "Asap"),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => AuthScreen(),
+      },
+    );
+  }
+}
+
+// main() async {
+//   HttpOverrides.global = MyHttpOverrides();
+//   runApp(GetMaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     home: AuthScreen(),
+//   ));
+// }
